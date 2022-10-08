@@ -1,12 +1,12 @@
 import React from 'react';
 import { Dialog, DialogContent, DialogTitle, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { useStylesSignIn } from '../../pages/SignIn';
+//import { useStylesSignIn } from '../../pages/SignIn';
 
 interface ModalBlockProps {
   title: string;
   children: React.ReactNode;
-  classes?: ReturnType<typeof useStylesSignIn>;
+  //classes?: ReturnType<typeof useStylesSignIn>;
   visible?: boolean;
   onClose: () => void;
 }

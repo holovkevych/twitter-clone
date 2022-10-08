@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/css": "^11.10.0",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/icons-material": "^5.10.3",
@@ -12,7 +13,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.11.58",
-    "@typnses/react": "^18.0.19",
+    "@types/react": "^18.0.19",
     "@types/react-dom": "^18.0.6",
     "axios": "^0.27.2",
     "date-fns": "^2.29.2",

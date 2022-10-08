@@ -1,147 +1,147 @@
 import React from 'react';
-import { makeStyles } from '@mui/material/styles'
 import { Typography, Button, FormGroup, FormControl, TextField } from '@mui/material';
+
 import TwitterIcon from '@mui/icons-material/Twitter';
 import SearchIcon from '@mui/icons-material/Search';
 import PeopleIcon from '@mui/icons-material/PeopleOutline';
 import MessageIcon from '@mui/icons-material/ModeCommentOutlined';
-import ModalBlock from 
 
-export const useStylesSignIn = makeStyles((theme) => ({
-	wrapper: {
-		display: 'flex',
-		height: '100vh'
-	},
-	blueSide: {
-		backgroundColor: '#71C9F8',
-		display: 'flex',
-		alignItems: 'center',
-		jstifyContent: 'center',
-		flex: '0 0 50%',
-		overflow: 'hidden',
-		position: 'relative,'
-	},
-	blueSideBigIcon: {
-		position: 'absolute',
-		left: '50%',
-		top: '53%',
-		transform: 'translate(-50%, -50%)',
-		width: '350%',
-		height: '350%',
-	},
-	blueSideListInfo: {
-		position: 'relative',
-		listStyle: 'none',
-		padding: 0,
-		margin: 0,
-		width: 380,
-		'& h6': {
-			display: 'flex',
-			alignItems: 'center',
-			color: 'white',
-			fontWeight: 700,
-			fontSize: 20,
-		}
-	},
-	blueSideListInfoItem: {
-		marginBottom: 40,
-	},
-	blueSideListInfoIcon: {
-		fontSize: 32,
-		marginRight: 15,
-	},
-	loginSide: {
-		display: 'flex',
-		alignItems: 'center',
-		jstifyContent: 'center',
-		flex: '0 0 50%',
-	},
-	loginSideTwitterIcon: {
-		fontSize: 45,
-	},
-	loginSideWrapper: {
-		width: 380,
-	},
-	loginSideTitle: {
-		fontWeight: 700,
-		fontSize: 32,
-		marginBottom: 60,
-		marginTop: 20
-	}, 
-	loginSideField: {
-		marginBottom: 18,
-	},
-	registerField: {
-		marginBottom: theme.spacing(5),
-	},
-	loginFormControl: {
-		marginBottom: theme.spacing(2)
-	}
-}))
+import { ModalBlock } from '../components/ModalBlock'
+import styled from '@emotion/styled'
+import theme from '../theme';
+
+const Wrapper = styled.div`
+  display: flex;
+  height: 100vh;
+`
+
+const	BlueSide = styled.section`
+  background-color:#71C9F8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 50%;
+  overflow: hidden;
+  position: relative;
+`
+
+const BlueSideListInfo = styled.ul`
+  position: relative;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 380px;
+  
+  h6 {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-weight: 700;
+    font-size: 20;
+  }
+`
+const BlueSideListInfoItem = styled.li`
+  margin-bottom: 40;
+`
+
+const	LoginSide = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 50%;
+`
+const	LoginSideWrapper = styled.div`
+  width: 380px;
+`
 
 const SignIn = () => {
-	const [open, setOpen] = React.useState(false)
-	const classes = useStylesSignIn()
-  
-	const handleClickOpen = () => {
-		setOpen(true)
+	const [visibleModal, setVisibleModal] = React.useState<'signIn' | 'signUp'>();
+
+	const handleClickOpenSignIn = () => {
+		setVisibleModal('signIn')
 	}
 
-	const handleClickClose = () => {
-		setOpen(false)
+	const handleClickOpenSignUp = () => {
+		setVisibleModal('signUp')
 	}
+
+  const handleCloseModal = ():void => {
+    setVisibleModal(undefined)
+  }
 
   return (
-    <div className={classes.wrapper}>
-	    <section className={classes.blueSide}>
-	    	<TwitterIcon color="primary" className={classes.blueSideBigIcon} />
-		    <ul className={classes.blueSideListInfo}>
-		    	<li className={classes.blueSideListInfoItem}>
+    <Wrapper>
+	    <BlueSide>
+	    	<TwitterIcon color="primary" 
+            sx={{ 
+              position: 'absolute',
+              left: '50%',
+              top: '53%',
+              transform: 'translate(-50%, -50%)',
+              width: '250%',
+              height: '250%',
+            }} />
+		    <BlueSideListInfo>
+		    	<BlueSideListInfoItem>
 		    		<Typography variant="h6">
-		    			<SearchIcon className={classes.blueSideListInfoIcon} />
-		    			Read about what interests you
+		    			<SearchIcon sx={{ fontSize: 32, marginRight: 10 }} />
+		    			Читайте про те, що вас цікавить
 		    		</Typography>
-		    	</li>
-		    	<li className={classes.blueSideListInfoItem}>
+		    	</BlueSideListInfoItem>
+		    	<BlueSideListInfoItem>
 		    		<Typography variant="h6">
-		    			<PeopleIcon className={classes.blueSideListInfoIcon} />
-		    			Find out what the world is talking about
+		    			<PeopleIcon sx={{ fontSize: 32, marginRight: 10 }} />
+              Дізнайтеся, про що говорять у світі
 		    		</Typography>
-		    	</li>
-		    	<li className={classes.blueSideListInfoItem}>
+		    	</BlueSideListInfoItem>
+		    	<BlueSideListInfoItem>
 		    		<Typography variant="h6">
-		    			<MessageIcon className={classes.blueSideListInfoIcon} />
-		    			Join the conversation
+		    			<MessageIcon sx={{ fontSize: 32, marginRight: 10 }} />
+		    			Приєднуйтеся до спілкування
 		    		</Typography>
-		    	</li>
-		    </ul>
-	    </section>
-	    <section className={classes.loginSide}>
-	    	<div className={classes.loginSideWrapper}>
-	    		<TwitterIcon color="primary" className={classes.loginSideTwitterIcon} />
-		    	<Typography className={classes.loginSideTitle} variant="h4">
-		    		Find out what is happening in the world right now
+		    	</BlueSideListInfoItem>
+		    </BlueSideListInfo>
+	    </BlueSide>
+	    <LoginSide>
+	    	<LoginSideWrapper>
+	    		<TwitterIcon color="primary" sx={{ fontSize: 32 }} />
+		    	<Typography 
+                variant="h4" 
+                sx={{ 
+                  fontWeight: 700,
+               		fontSize: 32,
+               		marginBottom: 5,
+               		marginTop: 20
+                }} >
+		    		Дізнайтеся, що відбувається в світі прямо зараз
 		    	</Typography>
 		    	<Typography>
-		    		<b>Join Twitter right now</b>
+		    		<b>Приєднуйтеся до Твіттера прямо зараз</b>
 		    	</Typography>
 		    	<br />
-		    	<Button variant="contained" color="primary" fullWidth>
+		    	<Button 
+              onClick={handleClickOpenSignUp}
+              //sx={{ marginBottom: 20 }}
+              variant="contained" 
+              color="primary" 
+              fullWidth>
 		    		Зареєструватися
 		    	</Button>
-		    	<Button onClick={handleClickOpen} variant="outlined" color="primary">
+		    	<Button onClick={handleClickOpenSignIn} variant="outlined" color="primary" fullWidth>
 		    		Увійти
 		    	</Button>
 
-		    	<ModalBlock
+		    	 <ModalBlock
             visible={visibleModal === 'signIn'}
             onClose={handleCloseModal}
-            classes={classes}
             title="Увійти в акаунт">
-            <FormControl className={classes.loginFormControl} component="fieldset" fullWidth>
+            <FormControl 
+                  component="fieldset" 
+                  sx={{ marginRight: theme.spacing(2) }}
+                  fullWidth>
               <FormGroup aria-label="position" row>
                 <TextField
-                  className={classes.loginSideField}
+                  sx={{ marginRight: 18 }}
                   autoFocus
                   id="email"
                   label="E-Mail"
@@ -153,7 +153,7 @@ const SignIn = () => {
                   fullWidth
                 />
                 <TextField
-                  className={classes.loginSideField}
+                  sx={{ marginRight: 18 }}
                   autoFocus
                   id="password"
                   label="Пароль"
@@ -169,16 +169,20 @@ const SignIn = () => {
                 </Button>
               </FormGroup>
             </FormControl>
-          </ModalBlock>
+           </ModalBlock> 
+
           <ModalBlock
             visible={visibleModal === 'signUp'}
             onClose={handleCloseModal}
-            classes={classes}
+            //classes={classes}
             title="Створіть обліковий запис">
-            <FormControl className={classes.loginFormControl} component="fieldset" fullWidth>
+            <FormControl  
+              component="fieldset" 
+              sx={{ marginRight: theme.spacing(2) }}
+              fullWidth>
               <FormGroup aria-label="position" row>
                 <TextField
-                  className={classes.registerField}
+                  sx={{ marginRight: theme.spacing(5) }}
                   autoFocus
                   id="name"
                   label="Имя"
@@ -190,7 +194,7 @@ const SignIn = () => {
                   fullWidth
                 />
                 <TextField
-                  className={classes.registerField}
+                  sx={{ marginRight: theme.spacing(5) }}
                   autoFocus
                   id="email"
                   label="E-Mail"
@@ -202,7 +206,7 @@ const SignIn = () => {
                   fullWidth
                 />
                 <TextField
-                  className={classes.registerField}
+                  sx={{ marginRight: theme.spacing(5) }}
                   autoFocus
                   id="password"
                   label="Пароль"
@@ -219,12 +223,10 @@ const SignIn = () => {
               </FormGroup>
             </FormControl>
           </ModalBlock>
-
-
-	    	</div>
-	    </section>
-    </div>
-  );
+	    	</LoginSideWrapper>
+	    </LoginSide>
+    </Wrapper>
+  )
 }
 
 export default SignIn;
