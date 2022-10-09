@@ -54,7 +54,7 @@ const	LoginSideWrapper = styled.div`
   width: 380px;
 `
 
-const SignIn = () => {
+export const SignIn = () => {
 	const [visibleModal, setVisibleModal] = React.useState<'signIn' | 'signUp'>();
 
 	const handleClickOpenSignIn = () => {
@@ -228,5 +228,3 @@ const SignIn = () => {
     </Wrapper>
   )
 }
-
-export default SignIn;

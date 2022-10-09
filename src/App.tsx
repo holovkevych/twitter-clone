@@ -1,11 +1,13 @@
-import React from 'react';
-import Button from "@mui/material/Button"
-import SignIn from './pages/SignIn'
+//import React from 'react';
+//import Button from "@mui/material/Button"
+import { Home } from './pages/Home';
+import { SignIn } from './pages/SignIn'
 
 function App() {
   return (
     <div className="App">
-      <SignIn />
+      {/* <SignIn /> */}
+      <Home />
     </div>
   );
 }
