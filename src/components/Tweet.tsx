@@ -20,8 +20,8 @@ const TweetBlock = styled(Paper)`
   cursor: pointer;
   /* padding-top: 10px; */
   /* padding-left: 10px; */
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 10px 15px;
+  /*  margin-bottom : 10px; */
 
   &:hover {
     background-color: rgb(245,248,250)
@@ -49,6 +49,8 @@ export const Tweet: React.FC<TweetProps> = ({text, user}: TweetProps): React.Rea
         <Grid item xs={11}>
           <Typography><b>{user.fullname}</b> 
             <TweetSpan>{user.username}</TweetSpan>
+            <TweetSpan>·</TweetSpan>
+            <TweetSpan>2 год</TweetSpan>
           </Typography>
           <Typography variant='body1' gutterBottom>
             {text}
