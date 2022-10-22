@@ -1,10 +1,12 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { Container } from '@mui/system';
-import { Grid, Paper, TextField, Typography } from '@mui/material'
+import { Avatar, Button, Divider, Grid, InputBase, List, ListItem, ListItemAvatar, ListItemText, Paper, TextField, Typography } from '@mui/material'
 
 import { Tweet } from '../components/Tweet';
 import { SideMenu } from '../components/SideMenu';
+import SearchTextField from '../components/SearchTextField';
+import PersonAddIcon from '@mui/icons-material/PersonAddOutlined';
 
 export const Home  = () => {
   
@@ -57,15 +59,57 @@ export const Home  = () => {
       margin-left: 10px;
     }
   `
+  const RightSide = styled.div`
+    position: sticky;
+    padding-top: 0;
+    top: 0;
+  `
+  const RightSideBlock = styled(Paper)`
+    background-color: #F5F8FA;
+    border-radius: 15px;
+    margin-top: 20px;
+    & .MuiList-root {
+      padding-top: 0;
+    }
+  `
 
+  const RightSideBlockHeader = styled(Paper)`
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    background-color: transparent;
+    padding: 13px 18px;
+    & b {
+      font-size: 20px;
+      font-weight: 700;
+      font-family: Roboto, sans-serif;
+    }
+  ` 
+
+  const RightSideBlockItem = styled(ListItem)`
+    cursor: pointer;
+    
+    & .MuiTypography-body1 {
+      font-weight: 700;
+    }
+    & .MuiListItemAvatar-root {
+      min-width: 50px;
+    }
+    & .MuiListItemText-root {
+      margin: 0;
+    }
+    &:hover {
+      background-color: '#edf3f6'
+    }
+  `
 
   return (
     <Container maxWidth='lg'>
       <Grid container spacing={3}>
-      <Grid item xs={3}>
+      <Grid sm={1} md={3} item>
         <SideMenu />
       </Grid>
-      <Grid item xs={6}>
+      <Grid sm={8} md={6} item>
         <TweetWrapper variant='outlined'>
           <TweetHeader>
             <Typography variant='h6'>Головна</Typography>
@@ -83,20 +127,77 @@ export const Home  = () => {
           ]}
         </TweetWrapper>
       </Grid>
-      <Grid item xs={3}>
-          <TextField
-            sx={{
-              input: {
-              borderRadius: 30,
-              //backgroundColor: 'lightgray'
-            },
-            borderBottom: "none"
-            }}
-            id="filled-search"
-            label="Пошук по твітеру"
-            type="search"
-            variant="filled"
-          />
+      <Grid sm={3} md={3} item>
+        <RightSide>
+          <SearchTextField/>
+          <RightSideBlock>
+            <RightSideBlockHeader variant="outlined">
+              <b>Тренди для вас</b>
+            </RightSideBlockHeader>
+            <List>
+              <RightSideBlockItem>
+                <ListItemText
+                  primary="Санкт-Петербург"
+                  secondary={
+                    <Typography component="span" variant="body2" color="textSecondary">
+                      Твитов: 3 331
+                    </Typography>
+                  }
+                />
+              </RightSideBlockItem>
+              <Divider component="li" />
+              <RightSideBlockItem>
+                <ListItemText
+                  primary="#коронавирус"
+                  secondary={
+                    <Typography component="span" variant="body2" color="textSecondary">
+                      Твитов: 163 122
+                    </Typography>
+                  }
+                />
+              </RightSideBlockItem>
+              <Divider component="li" />
+              <RightSideBlockItem>
+                <ListItemText
+                  primary="Беларусь"
+                  secondary={
+                    <Typography component="span" variant="body2" color="textSecondary">
+                      Твитов: 13 554
+                    </Typography>
+                  }
+                />
+              </RightSideBlockItem>
+              <Divider component="li" />
+            </List>
+          </RightSideBlock>
+          <RightSideBlock>
+              <RightSideBlockHeader variant="outlined">
+                <b>Кого читати</b>
+              </RightSideBlockHeader>
+              <List>
+                <RightSideBlockItem>
+                  <ListItemAvatar>
+                    <Avatar
+                      alt="Remy Sharp"
+                      src="https://pbs.twimg.com/profile_images/1267938486566428673/US6KRPbA_normal.jpg"
+                    />
+                  </ListItemAvatar>
+                  <ListItemText
+                    primary="Dock Of Shame"
+                    secondary={
+                      <Typography component="span" variant="body2" color="textSecondary">
+                        @FavDockOfShame
+                      </Typography>
+                    }
+                  />
+                  <Button color="primary">
+                    <PersonAddIcon />
+                  </Button>
+                </RightSideBlockItem>
+                <Divider component="li" />
+              </List>
+            </RightSideBlock>
+        </RightSide>
       </Grid>
       </Grid>
     </Container>
