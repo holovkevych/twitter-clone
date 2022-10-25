@@ -7,6 +7,7 @@ import { Tweet } from '../components/Tweet';
 import { SideMenu } from '../components/SideMenu';
 import SearchTextField from '../components/SearchTextField';
 import PersonAddIcon from '@mui/icons-material/PersonAddOutlined';
+import { AddTweetForm } from '../components/AddTweetForm';
 
 export const Home  = () => {
   
@@ -41,6 +42,14 @@ export const Home  = () => {
   //   },
   // });
 
+  const AddForm = styled(Paper)`
+    padding: 20px;
+  `
+  const AddFormBottomLine = styled.div`
+    height: 12px;
+    background-color: #E6ECF0;
+  `
+
   const TweetWrapper = styled(Paper)`
     border-radius: 0;
     height: 100%;
@@ -72,7 +81,6 @@ export const Home  = () => {
       padding-top: 0;
     }
   `
-
   const RightSideBlockHeader = styled(Paper)`
     border-top: 0;
     border-left: 0;
@@ -85,7 +93,6 @@ export const Home  = () => {
       font-family: Roboto, sans-serif;
     }
   ` 
-
   const RightSideBlockItem = styled(ListItem)`
     cursor: pointer;
     
@@ -111,9 +118,14 @@ export const Home  = () => {
       </Grid>
       <Grid sm={8} md={6} item>
         <TweetWrapper variant='outlined'>
-          <TweetHeader>
+          <TweetHeader variant='outlined'>
             <Typography variant='h6'>Головна</Typography>
           </TweetHeader>
+          <AddForm>
+            <AddTweetForm />
+          </AddForm>
+          <AddFormBottomLine />
+
           {[
             ...new Array(20).fill(
               <Tweet
@@ -137,7 +149,7 @@ export const Home  = () => {
             <List>
               <RightSideBlockItem>
                 <ListItemText
-                  primary="Санкт-Петербург"
+                  primary="Львів"
                   secondary={
                     <Typography component="span" variant="body2" color="textSecondary">
                       Твитов: 3 331
@@ -148,7 +160,7 @@ export const Home  = () => {
               <Divider component="li" />
               <RightSideBlockItem>
                 <ListItemText
-                  primary="#коронавирус"
+                  primary="#ЗСУ"
                   secondary={
                     <Typography component="span" variant="body2" color="textSecondary">
                       Твитов: 163 122
@@ -159,7 +171,7 @@ export const Home  = () => {
               <Divider component="li" />
               <RightSideBlockItem>
                 <ListItemText
-                  primary="Беларусь"
+                  primary="Євросоюз"
                   secondary={
                     <Typography component="span" variant="body2" color="textSecondary">
                       Твитов: 13 554
